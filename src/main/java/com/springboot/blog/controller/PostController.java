@@ -27,8 +27,11 @@ public class PostController {
     // get all po/posts rest api
 
     @GetMapping
-    public List<PostDto> getAllPosts() {
-        return postService.getAllPosts();
+    public List<PostDto> getAllPosts(
+            @RequestParam(value = "pageNo", defaultValue = "0", required = false) int pageNo,
+            @RequestParam(value = "pageSize", defaultValue = "10", required = false) int pageSize
+    ) {
+        return postService.getAllPosts(pageNo,pageSize);
     }
 
     // get post by id
@@ -48,11 +51,11 @@ public class PostController {
 
 
     // delete post by id rest api
-    
+
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deletePost(@PathVariable(name="id") long id){
+    public ResponseEntity<String> deletePost(@PathVariable(name = "id") long id) {
         postService.deletePostById(id);
-        return new ResponseEntity<>("Post entity deleted successfully.",HttpStatus.OK);
+        return new ResponseEntity<>("Post entity deleted successfully.", HttpStatus.OK);
     }
 
 }
