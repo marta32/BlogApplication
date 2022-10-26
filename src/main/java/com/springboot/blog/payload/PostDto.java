@@ -13,18 +13,18 @@ public class PostDto {
 
     // title should not be null or empty;
     // title should have at least 2 characters;
-    @NotEmpty
+    @NotEmpty(message = "Post title should not be empty")
     @Size(min = 2, message = "Post title should have at least 2 characters")
     private String title;
 
     // post description should not be null or empty;
     // post description should have at least 10 characters;
-    @NotEmpty
+    @NotEmpty(message = "Post description should not be empty")
     @Size(min = 10, message = "Post description should have at least 10 characters")
     private String description;
 
     // post content should not be null or empty;
-    @NotEmpty
+    @NotEmpty(message = "Post content should not be empty")
     private String content;
     private Set<CommentDto> comments;
 }
